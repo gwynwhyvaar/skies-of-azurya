@@ -38,15 +38,26 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Enums\GameStateEnum.cs" />
+    <Compile Include="Objects\AvatarEx.cs" />
+    <Compile Include="Objects\ForceBall.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Objects\GameConstants.cs" />
+    <Compile Include="Objects\HillSide.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Objects\Scene.cs" />
+    <Compile Include="SkiesOfAzuryaClass.cs" />
+    <Compile Include="Objects\TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Lidgren.Network, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="MonoGame.Framework.Net, Version=3.4.0.456, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
