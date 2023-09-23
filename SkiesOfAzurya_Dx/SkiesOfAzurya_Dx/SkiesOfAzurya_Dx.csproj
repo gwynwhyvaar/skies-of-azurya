@@ -56,16 +56,37 @@
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework.Net, Version=3.4.0.456, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.5\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\bannerx.jpg" />
+    <Content Include="Content\Images\bannerx2c.JPG" />
+    <Content Include="Content\Images\forceball40x40.jpg" />
+    <Content Include="Content\Images\hpbarx.jpg" />
+    <Content Include="Content\Images\nazviico40x40.jpg" />
+    <Content Include="Content\Images\Ro_Labanaktia_Azurya_03.jpg" />
+    <Content Include="Content\Images\wizardico40x40.jpg" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <None Include="Content\Content.mgcb" />
+    <None Include="Content\Fonts\Kootenay.spritefont" />
+    <None Include="Content\Models\forceball-mage.fbx" />
+    <None Include="Content\Models\forceball-nazvhy.fbx" />
+    <None Include="Content\Models\forest.fbx" />
+    <None Include="Content\Models\nazvhi-flight.fbx" />
+    <None Include="Content\Models\nazvhi-title-background.fbx" />
+    <None Include="Content\Models\rock.fbx" />
+    <None Include="Content\Models\scythe.fbx" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

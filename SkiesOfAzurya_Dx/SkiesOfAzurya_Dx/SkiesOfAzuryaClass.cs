@@ -9,11 +9,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 //using Microsoft.Xna.Framework.Net;
-using Microsoft.Xna.Framework.Storage;
+//using Microsoft.Xna.Framework.Storage;
 using SkiesOfAzurya.Objects;
 using System.Configuration;
 using System.IO;
 using SkiesOfAzurya.Enums;
+using System.Diagnostics;
 
 namespace SkiesOfAzurya
 {
@@ -53,7 +54,7 @@ namespace SkiesOfAzurya
 
         SpriteBatch spriteBatch;
 
-        SpriteFont centurygothic;
+        SpriteFont Kootenay;
 
         Int32 Score =0;
 
@@ -122,13 +123,13 @@ namespace SkiesOfAzurya
                 graphics = new GraphicsDeviceManager(this);
                 Content.RootDirectory = "Content";
                 Window.Title = "Nazvhi - Skies of Azurya XNA Demo";
-                
+
                 graphics.PreferMultiSampling = Convert.ToBoolean(ConfigurationManager.AppSettings["AllowMultiSampling"]);
                 graphics.PreferredDepthStencilFormat = DepthFormat.Depth24;
             }
             catch (Exception exception)
             {
-                //File.AppendAllText("c:\\ro.azurya.log", DateTime.Now.ToString() + "\n\r#Error :" + exxxxx.Message + "\n\r\tStacktrace :" + exxxxx.StackTrace + "\n\r\n\r");
+                Trace.TraceInformation($"The following exception occured. {exception.ToString()}");
             }
         }
         /// <summary>
@@ -222,7 +223,7 @@ namespace SkiesOfAzurya
             //load the Assets for the title screen here..
             titleScreen.TitleModels.Add("Background", Content.Load<Model>("Models\\nazvhi-title-background"));
             titleScreen.BackgroundTitleTexture = Content.Load<Texture2D>("Images\\nazvhi-title-background");
-            centurygothic = Content.Load<SpriteFont>("Fonts//CenturyGothic");
+            Kootenay = Content.Load<SpriteFont>("Fonts//Kootenay");
         }
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -534,20 +535,20 @@ namespace SkiesOfAzurya
 
                     //we draw the score last
                     spriteBatch.Begin();//SpriteBlendMode.None, SpriteSortMode.Immediate, SaveStateMode.None);
-                    spriteBatch.DrawString(centurygothic, "Score : " + Score + "  Exp " + Convert.ToInt32(EXP), new Vector2(110, 110), Color.Black);
+                    spriteBatch.DrawString(Kootenay, "Score : " + Score + "  Exp " + Convert.ToInt32(EXP), new Vector2(110, 110), Color.Black);
                     spriteBatch.End();
                     //we draw the MP
                     spriteBatch.Begin();//SpriteBlendMode.None, SpriteSortMode.Immediate, SaveStateMode.None);
-                    spriteBatch.DrawString(centurygothic, "MP : " + Convert.ToInt32(MP), new Vector2(300, 55), Color.Black);
+                    spriteBatch.DrawString(Kootenay, "MP : " + Convert.ToInt32(MP), new Vector2(300, 55), Color.Black);
                     spriteBatch.End();
                     //we draw the HP
                     spriteBatch.Begin();//SpriteBlendMode.None, SpriteSortMode.Immediate, SaveStateMode.None);
-                    spriteBatch.DrawString(centurygothic, "HP : " + Convert.ToInt32(HP), new Vector2(160, 55), Color.Black);
+                    spriteBatch.DrawString(Kootenay, "HP : " + Convert.ToInt32(HP), new Vector2(160, 55), Color.Black);
                     spriteBatch.End();
 
                     //we draw the game version here..
                     spriteBatch.Begin();//SpriteBlendMode.None, SpriteSortMode.Immediate, SaveStateMode.None);
-                    spriteBatch.DrawString(centurygothic, "(c) Kaddiska Skies of Azurya Pre-Aphla Build", new Vector2(240, 150), Color.Maroon);
+                    spriteBatch.DrawString(Kootenay, "(c)"+DateTime.Now.ToString()+" Skies of Azurya Monogame Direct X Build", new Vector2(240, 150), Color.Maroon);
                     spriteBatch.End();
                     #endregion
                     //drawing life bars
@@ -571,7 +572,7 @@ namespace SkiesOfAzurya
                     if (isPaused == true)
                     {
                         spriteBatch.Begin();
-                        spriteBatch.DrawString(centurygothic, "PAUSED", new Vector2(graphics.GraphicsDevice.DisplayMode.Height / 2.0f, graphics.GraphicsDevice.DisplayMode.Width / 2.0f), Color.Black);
+                        spriteBatch.DrawString(Kootenay, "PAUSED", new Vector2(graphics.GraphicsDevice.DisplayMode.Height / 2.0f, graphics.GraphicsDevice.DisplayMode.Width / 2.0f), Color.Black);
                         spriteBatch.End();
                     }
                     break; 
@@ -641,26 +642,26 @@ namespace SkiesOfAzurya
             if (menuoptions == 1)
             {
                 spriteBatch.Begin();
-                spriteBatch.DrawString(centurygothic, "Start Single Player Demo", new Vector2(160, 55), Color.Yellow);
+                spriteBatch.DrawString(Kootenay, "Start Single Player Demo", new Vector2(160, 55), Color.Yellow);
                 spriteBatch.End();
             }
             else
             {
                 spriteBatch.Begin();
-                spriteBatch.DrawString(centurygothic, "Start Single Player Demo", new Vector2(160, 55), Color.Black);
+                spriteBatch.DrawString(Kootenay, "Start Single Player Demo", new Vector2(160, 55), Color.Black);
                 spriteBatch.End();
             }
             //check if it's second option selected, then we highlight appropriately
             if (menuoptions == 2)
             {
                 spriteBatch.Begin();
-                spriteBatch.DrawString(centurygothic, "Options", new Vector2(160, 75), Color.Yellow);
+                spriteBatch.DrawString(Kootenay, "Options", new Vector2(160, 75), Color.Yellow);
                 spriteBatch.End();
             }
             else
             {
                 spriteBatch.Begin();
-                spriteBatch.DrawString(centurygothic, "Options", new Vector2(160, 75), Color.Black);
+                spriteBatch.DrawString(Kootenay, "Options", new Vector2(160, 75), Color.Black);
                 spriteBatch.End();
             }
 
@@ -668,13 +669,13 @@ namespace SkiesOfAzurya
             if (menuoptions == 3)
             {
                 spriteBatch.Begin();
-                spriteBatch.DrawString(centurygothic, "Exit", new Vector2(160, 95), Color.Yellow);
+                spriteBatch.DrawString(Kootenay, "Exit", new Vector2(160, 95), Color.Yellow);
                 spriteBatch.End();
             }
             else
             {
                 spriteBatch.Begin();
-                spriteBatch.DrawString(centurygothic, "Exit", new Vector2(160, 95), Color.Black);
+                spriteBatch.DrawString(Kootenay, "Exit", new Vector2(160, 95), Color.Black);
                 spriteBatch.End();
             }
             
@@ -923,7 +924,7 @@ namespace SkiesOfAzurya
                 #endregion
 
                 //load the font
-                centurygothic = Content.Load<SpriteFont>("Fonts//CenturyGothic");
+                Kootenay = Content.Load<SpriteFont>("Fonts//Kootenay");
                 //
                 //LoadBackground(GraphicsDevice, Background);
             }
