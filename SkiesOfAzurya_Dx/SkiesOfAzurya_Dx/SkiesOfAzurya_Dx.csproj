@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>nazvhi-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -91,6 +91,7 @@
     <Content Include="Content\Images\Ro_Labanaktia_Azurya_03.jpg" />
     <Content Include="Content\Images\wizardico40x40.jpg" />
     <Content Include="Icon.ico" />
+    <Content Include="nazvhi-icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
