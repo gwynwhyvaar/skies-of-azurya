@@ -1,20 +1,17 @@
 using System;
-using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 //using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 //using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
+
+using SkiesOfAzurya.Enums;
 //using Microsoft.Xna.Framework.Net;
 //using Microsoft.Xna.Framework.Storage;
 using SkiesOfAzurya.Objects;
-using System.Configuration;
-using System.IO;
-using SkiesOfAzurya.Enums;
-using System.Diagnostics;
 
 namespace SkiesOfAzurya
 {
@@ -39,7 +36,7 @@ namespace SkiesOfAzurya
 
         private string defaultModel = "nazvhi-flight";
 
-        private GameConstants gameConstants ;//= new GameConstants();
+        private GameConstants gameConstants;//= new GameConstants();
 
         private float layerDepth = 0f;
 
@@ -56,7 +53,7 @@ namespace SkiesOfAzurya
 
         SpriteFont Kootenay;
 
-        Int32 Score =0;
+        Int32 Score = 0;
 
         Vector2 ScorePosition = new Vector2(100, 50);
 
@@ -73,14 +70,14 @@ namespace SkiesOfAzurya
 
         ForceBall[] ForceBallList;
         HillSide[] HillSideList;
-       
+
         Random randomVar = new Random();
 
         //Camera/View information
         Vector3 cameraPosition = new Vector3(0.0f, 0.0f, -5000.0f);
 
         Matrix projectionMatrix;
-        Matrix viewMatrix,titleViewMatrix;
+        Matrix viewMatrix, titleViewMatrix;
 
         //get-sets the default model to load in this application
         public String DefaultModel { get { return defaultModel; } set { defaultModel = value; } }
@@ -98,11 +95,11 @@ namespace SkiesOfAzurya
         #region to keep my mesh spinning in the skies..i think i will need this :P
         private float modelRotation = 0.0f;
 
-        public float ModelRotation { get { return modelRotation; } set { modelRotation = value; } } 
+        public float ModelRotation { get { return modelRotation; } set { modelRotation = value; } }
         #endregion
 
         #region fields for the background - wont the best thing be to create a class for this? oh well :P
-        
+
         public Texture2D Background { get; set; }
         public Vector2 ScreenPosition;
         public Vector2 Origin { get; set; }
@@ -110,8 +107,8 @@ namespace SkiesOfAzurya
 
         public Texture2D RoBackgroundTexture { get; set; }
 
-        public Int32 ScreenHeight { get; set; } 
-        
+        public Int32 ScreenHeight { get; set; }
+
         #endregion
 
         Texture2D nazvhihp40x40, nazvhimp40x40, banner;
@@ -152,7 +149,7 @@ namespace SkiesOfAzurya
 
                 HillSideList = new HillSide[gameConstants.NumObstacles];
                 ForceBallList = new ForceBall[GameConstants.NumForceBalls];
-               
+
                 cameraPosition = new Vector3(0.0f, 0.0f, gameConstants.CameraHeight);
 
                 DefaultModel = ConfigurationManager.AppSettings["DefaultModel"];
@@ -168,11 +165,11 @@ namespace SkiesOfAzurya
 
                 //set up the view matrix for the title screen.
                 viewMatrix = Matrix.CreateLookAt(cameraPosition, Vector3.Zero, Vector3.Up);
-                titleViewMatrix = Matrix.CreateLookAt(new Vector3(0,0,130)/*new Vector3(10f)*/, Vector3.Zero, Vector3.Up);
+                titleViewMatrix = Matrix.CreateLookAt(new Vector3(0, 0, 130)/*new Vector3(10f)*/, Vector3.Zero, Vector3.Up);
 
                 //set up the projection matrix for the title screen.
                 projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), GraphicsDevice.DisplayMode.AspectRatio, gameConstants.CameraHeight - 2000.0f, gameConstants.CameraHeight + 1000.0f);
-                
+
                 ResetObstacles();
                 /* TODO: will check on how this would work in Monogame
                 var caps = graphics.GraphicsDevice.GraphicsProfile;
@@ -219,7 +216,7 @@ namespace SkiesOfAzurya
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-                
+
             //load the Assets for the title screen here..
             titleScreen.TitleModels.Add("Background", Content.Load<Model>("Models\\nazvhi-title-background"));
             titleScreen.BackgroundTitleTexture = Content.Load<Texture2D>("Images\\nazvhi-title-background");
@@ -352,7 +349,7 @@ namespace SkiesOfAzurya
                     #endregion
                     break;
                 case GameStateEnum.TitleScreen:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) == true&&menuoptions==1)
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) == true && menuoptions == 1)
                     {
                         GameStateEnum = GameStateEnum.GameDemoScreen;
                         LoadGameDemoAssets();
@@ -376,16 +373,16 @@ namespace SkiesOfAzurya
 
             if (currentKeyState.IsKeyDown(Keys.Down) == true && lastTitleKeyBoardState.IsKeyUp(Keys.Down) == true)
             {
-                    menuoptions += 1;
-                    if (menuoptions > 3)
-                    {
-                        menuoptions = 1;
-                    }
+                menuoptions += 1;
+                if (menuoptions > 3)
+                {
+                    menuoptions = 1;
+                }
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Up) == true && lastTitleKeyBoardState.IsKeyUp(Keys.Up) == true)
             {
                 menuoptions -= 1;
-                if (menuoptions <1)
+                if (menuoptions < 1)
                 {
                     menuoptions = 3;
                 }
@@ -396,7 +393,7 @@ namespace SkiesOfAzurya
         {
             ScreenPosition.Y += deltaY;
             ScreenPosition.Y = ScreenPosition.Y % RoBackgroundTexture.Height;
-        } 
+        }
         public void UpdateKeyBoardInput()
         {
             //we get the current state of the gamepad
@@ -420,7 +417,7 @@ namespace SkiesOfAzurya
                     //avatarEx.IsActive = true;
                     //shouldnt happen mate..u lose a simple token..
                     HP -= 0.15f;
-            
+
                     MP -= 0.5f;
                     if (MP < 0)
                     {
@@ -437,7 +434,7 @@ namespace SkiesOfAzurya
                     this.graphics.ToggleFullScreen();
                 }
                 //are we shooting?
-                if (avatarEx.IsActive && currentMouseState.RightButton == ButtonState.Pressed&&lastMouseState.RightButton== ButtonState.Released)
+                if (avatarEx.IsActive && currentMouseState.RightButton == ButtonState.Pressed && lastMouseState.RightButton == ButtonState.Released)
                 {
                     //add another force ball. we find an inactive force ball slot (mana), and use it..
                     //if all force ball slots (mana)are used, ignore the user input
@@ -489,7 +486,7 @@ namespace SkiesOfAzurya
                     //spriteBatch.Begin(SpriteBlendMode.None, SpriteSortMode.Immediate, SaveStateMode.None);
                     //DrawBackground(spriteBatch);
                     //spriteBatch.End();
-                    
+
                     //we try to draw a simple world here..
                     DrawWorld(backgroundModel);
 
@@ -524,7 +521,7 @@ namespace SkiesOfAzurya
 
                     //we draw the banner and icons
                     #region Drawing banner and Icons
-                  
+
                     spriteBatch.Begin();
                     spriteBatch.Draw(nazvhihp40x40, new Vector2(110, 55), null, Color.White, 0, new Vector2(0, 0), 1, SpriteEffects.None, LayerDepth);
                     spriteBatch.End();
@@ -548,7 +545,7 @@ namespace SkiesOfAzurya
 
                     //we draw the game version here..
                     spriteBatch.Begin();//SpriteBlendMode.None, SpriteSortMode.Immediate, SaveStateMode.None);
-                    spriteBatch.DrawString(Kootenay, "(c)"+DateTime.Now.ToString()+" Skies of Azurya Monogame Direct X Build", new Vector2(240, 150), Color.Maroon);
+                    spriteBatch.DrawString(Kootenay, "(c)" + DateTime.Now.ToString() + " Skies of Azurya Monogame Direct X Build", new Vector2(240, 150), Color.Maroon);
                     spriteBatch.End();
                     #endregion
                     //drawing life bars
@@ -575,8 +572,8 @@ namespace SkiesOfAzurya
                         spriteBatch.DrawString(Kootenay, "PAUSED", new Vector2(graphics.GraphicsDevice.DisplayMode.Height / 2.0f, graphics.GraphicsDevice.DisplayMode.Width / 2.0f), Color.Black);
                         spriteBatch.End();
                     }
-                    break; 
-                    #endregion
+                    break;
+                #endregion
                 case GameStateEnum.TitleScreen:
                     //check if it's the Title screen
                     DrawTitle(titleScreen.BackgroundTitleTexture);
@@ -678,7 +675,7 @@ namespace SkiesOfAzurya
                 spriteBatch.DrawString(Kootenay, "Exit", new Vector2(160, 95), Color.Black);
                 spriteBatch.End();
             }
-            
+
             //draw the title mesh
         }
         public void DrawBackground(SpriteBatch spriteBatch)
@@ -720,7 +717,7 @@ namespace SkiesOfAzurya
                 mesh.Draw();// SaveStateMode.SaveState);
             }
         }
-        public  void DrawAvatarEx(Model model, Matrix modelTransform, Matrix[] absoluteBoneTransforms)
+        public void DrawAvatarEx(Model model, Matrix modelTransform, Matrix[] absoluteBoneTransforms)
         {
             //we draw the model..loop through each mesh of the model too
             foreach (ModelMesh mesh in model.Meshes)
@@ -741,7 +738,7 @@ namespace SkiesOfAzurya
                 mesh.Draw();// SaveStateMode.SaveState);
             }
         }
-        public static void DrawAvatarEx(Model model, Matrix modelTransform, Matrix[] absoluteBoneTransforms,float rotation,Vector3 position)
+        public static void DrawAvatarEx(Model model, Matrix modelTransform, Matrix[] absoluteBoneTransforms, float rotation, Vector3 position)
         {
             //we draw the model..loop through each mesh of the model too
             foreach (ModelMesh mesh in model.Meshes)
@@ -789,7 +786,7 @@ namespace SkiesOfAzurya
                 //draw the mesh :D
                 mesh.Draw();// SaveStateMode.SaveState);
             }
-        }  
+        }
         /// <summary>
         /// set up the position and velocity of the different obstacles..
         /// </summary>
@@ -897,7 +894,7 @@ namespace SkiesOfAzurya
 
                 //load the scythe
                 scytheModel = Content.Load<Model>("Models//scythe");
-                
+
                 //load the world
                 backgroundModel = Content.Load<Model>("Models//waterfall");
 
