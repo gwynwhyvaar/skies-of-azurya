@@ -121,7 +121,8 @@ namespace SkiesOfAzurya
                 Content.RootDirectory = "Content";
                 Window.Title = "Nazvhi - Skies of Azurya XNA Demo";
 
-                graphics.PreferMultiSampling = Convert.ToBoolean(ConfigurationManager.AppSettings["AllowMultiSampling"]);
+                // todo: move this to an in-memory db like sqllite or such
+                graphics.PreferMultiSampling = true; // Convert.ToBoolean(ConfigurationManager.AppSettings["AllowMultiSampling"]);
                 graphics.PreferredDepthStencilFormat = DepthFormat.Depth24;
             }
             catch (Exception exception)
@@ -152,7 +153,7 @@ namespace SkiesOfAzurya
 
                 cameraPosition = new Vector3(0.0f, 0.0f, gameConstants.CameraHeight);
 
-                DefaultModel = ConfigurationManager.AppSettings["DefaultModel"];
+                // DefaultModel = ConfigurationManager.AppSettings["DefaultModel"];
                 DefaultBackground = ConfigurationManager.AppSettings["DefaultBackground"];
                 LayerDepth = (float)Convert.ToDouble(ConfigurationManager.AppSettings["LayerDepth"]);
 
@@ -190,7 +191,10 @@ namespace SkiesOfAzurya
             }
             catch (Exception exception)
             {
+                Console.WriteLine(exception.Message);
                 //File.AppendAllText("c:\\ro.azurya.log", DateTime.Now.ToString() + "\n\r#Error :" + exxxxx.Message + "\n\r\tStacktrace :" + exxxxx.StackTrace + "\n\r\n\r");
+                // panic
+                throw exception;
             }
         }
         private Matrix[] SetupEffectDefaults(Model AvatarModelParam)
@@ -925,9 +929,12 @@ namespace SkiesOfAzurya
                 //
                 //LoadBackground(GraphicsDevice, Background);
             }
-            catch (Exception exxxxx)
+            catch (Exception exception)
             {
+                Console.WriteLine(exception.Message);
                 //File.AppendAllText("c:\\ro.azurya.log", DateTime.Now.ToString() + "\n\r#Error :" + exxxxx.Message + "\n\r\tStacktrace :" + exxxxx.StackTrace + "\n\r\n\r");
+                // panic
+                throw exception;
             }
         }
     }

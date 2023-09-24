@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 //using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace SkiesOfAzurya.Objects
@@ -13,7 +11,7 @@ namespace SkiesOfAzurya.Objects
         /// active flag for forceball..
         /// </summary>
         public Boolean IsActive;
-        
+
         public Vector3 Position;
         public Vector3 Direction;
 
@@ -23,7 +21,7 @@ namespace SkiesOfAzurya.Objects
 
         public void Update(float delta)
         {
-            GameConstants gameConstants=new GameConstants();
+            GameConstants gameConstants = new GameConstants();
             Position += Direction * Speed * GameConstants.ForceBallSpeedAdjustment * delta;
             if (Position.X > gameConstants.PlayFieldSizeX || Position.X < -gameConstants.PlayFieldSizeX || Position.Y > gameConstants.PlayFieldSizeY || Position.Y < -gameConstants.PlayFieldSizeY)
             {

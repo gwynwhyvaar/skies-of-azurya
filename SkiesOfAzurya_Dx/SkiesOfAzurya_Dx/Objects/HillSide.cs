@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 //using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace SkiesOfAzurya.Objects
@@ -18,10 +16,10 @@ namespace SkiesOfAzurya.Objects
 
         public void Update(float delta)
         {
-            GameConstants gameConstant=new GameConstants();
+            GameConstants gameConstant = new GameConstants();
 
             Position += Direction * Speed * gameConstant.SpeedAdjustment * delta;
-            
+
             if (Position.X > gameConstant.PlayFieldSizeX)
             {
                 Position.X -= 2 * gameConstant.PlayFieldSizeX;

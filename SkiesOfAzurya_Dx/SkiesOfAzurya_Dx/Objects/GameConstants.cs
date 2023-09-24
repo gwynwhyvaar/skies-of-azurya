@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 //using System.Linq;
-using System.Text;
-using System.Configuration;
 
 namespace SkiesOfAzurya.Objects
 {
@@ -119,6 +116,8 @@ namespace SkiesOfAzurya.Objects
 
         public GameConstants()
         {
+            // todo: move this setting to an in-memorydb like sqlite or such
+            /*
             CameraHeight = (float)Convert.ToDouble(ConfigurationManager.AppSettings["CameraHeight"]);
             PlayFieldSizeX = (float)Convert.ToDouble(ConfigurationManager.AppSettings["PlayFieldSizeX"]);
             PlayFieldSizeY = (float)Convert.ToDouble(ConfigurationManager.AppSettings["PlayFieldSizeY"]);
@@ -127,6 +126,7 @@ namespace SkiesOfAzurya.Objects
             SpeedAdjustment = (float)Convert.ToDouble(ConfigurationManager.AppSettings["SpeedAdjustment"]);
 
             NumObstacles = Convert.ToInt32(ConfigurationManager.AppSettings["NumberOfObstacles"]);
+            */
         }
     }
 }

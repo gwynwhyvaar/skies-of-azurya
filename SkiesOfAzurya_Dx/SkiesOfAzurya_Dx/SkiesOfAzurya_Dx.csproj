@@ -42,7 +42,6 @@
     <Compile Include="Enums\GameStateEnum.cs" />
     <Compile Include="Objects\AvatarEx.cs" />
     <Compile Include="Objects\ForceBall.cs" />
-    <Compile Include="Game1.cs" />
     <Compile Include="Objects\GameConstants.cs" />
     <Compile Include="Objects\HillSide.cs" />
     <Compile Include="Program.cs" />

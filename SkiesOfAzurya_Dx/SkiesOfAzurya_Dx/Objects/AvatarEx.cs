@@ -4,11 +4,8 @@
 // ------------------------
 
 using System;
-using System.Collections.Generic;
 //using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -43,7 +40,7 @@ namespace SkiesOfAzurya.Objects
         /// Velocity of the model, Applied each frame to the model's position
         /// </summary>
         public Vector3 Velocity = Vector3.Zero;
-        
+
         //amplifies controller speed input
         private const float VelocityScale = 5.0f;
 
@@ -125,7 +122,7 @@ namespace SkiesOfAzurya.Objects
             }
             if (keyBoardControllerState.IsKeyDown(Keys.Down) == true)
             {
-                Velocity += RotationMatrix.Backward* VelocityScale;
+                Velocity += RotationMatrix.Backward * VelocityScale;
             }
             else if (keyBoardControllerState.IsKeyDown(Keys.Right) == true)
             {
