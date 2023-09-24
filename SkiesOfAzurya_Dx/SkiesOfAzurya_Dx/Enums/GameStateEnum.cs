@@ -1,4 +1,4 @@
-﻿namespace SkiesOfAzurya.Enums
+﻿namespace Gwynwhyvaar.SkiesOfAzurya.WinDx.Enums
 {
     public enum GameStateEnum
     {

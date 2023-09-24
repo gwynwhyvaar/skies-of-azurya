@@ -1,7 +1,7 @@
 ﻿using System;
 //using System.Linq;
 
-namespace SkiesOfAzurya.Objects
+namespace Gwynwhyvaar.SkiesOfAzurya.WinDx.Objects
 {
     [Serializable]
     public class GameConstants

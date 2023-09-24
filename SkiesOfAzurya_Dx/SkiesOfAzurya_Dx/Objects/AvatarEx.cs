@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace SkiesOfAzurya.Objects
+namespace Gwynwhyvaar.SkiesOfAzurya.WinDx.Objects
 {
     [Serializable]
     public class AvatarEx

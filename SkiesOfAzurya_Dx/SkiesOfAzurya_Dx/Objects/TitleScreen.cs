@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SkiesOfAzurya.Objects
+namespace Gwynwhyvaar.SkiesOfAzurya.WinDx.Objects
 {
     [Serializable]
     public class TitleScreen

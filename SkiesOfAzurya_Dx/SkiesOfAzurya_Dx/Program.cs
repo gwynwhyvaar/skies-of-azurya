@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SkiesOfAzurya_Dx
+namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
 {
 #if WINDOWS || LINUX
     /// <summary>
@@ -14,7 +14,7 @@ namespace SkiesOfAzurya_Dx
         [STAThread]
         static void Main()
         {
-            using (var game = new SkiesOfAzurya.SkiesOfAzuryaGame())
+            using (var game = new SkiesOfAzuryaGame())
                 game.Run();
         }
     }

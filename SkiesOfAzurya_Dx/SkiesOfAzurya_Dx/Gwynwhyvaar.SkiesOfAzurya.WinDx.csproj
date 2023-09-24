@@ -9,8 +9,8 @@
     <ProjectGuid>{345D7867-BBA9-4EAD-8AF6-DF886DCD5285}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SkiesOfAzurya_Dx</RootNamespace>
-    <AssemblyName>SkiesOfAzurya_Dx</AssemblyName>
+    <RootNamespace>Gwynwhyvaar.SkiesOfAzurya.WinDx</RootNamespace>
+    <AssemblyName>Gwynwhyvaar.SkiesOfAzurya.WinDx</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>

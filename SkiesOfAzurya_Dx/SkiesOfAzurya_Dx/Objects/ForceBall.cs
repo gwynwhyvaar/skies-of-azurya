@@ -2,7 +2,7 @@
 //using System.Linq;
 using Microsoft.Xna.Framework;
 
-namespace SkiesOfAzurya.Objects
+namespace Gwynwhyvaar.SkiesOfAzurya.WinDx.Objects
 {
     [Serializable]
     public struct ForceBall

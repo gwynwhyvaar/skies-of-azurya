@@ -1,19 +1,19 @@
 using System;
 using System.Configuration;
 using System.Diagnostics;
+
+using Gwynwhyvaar.SkiesOfAzurya.WinDx.Enums;
+using Gwynwhyvaar.SkiesOfAzurya.WinDx.Objects;
 //using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 //using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
-using SkiesOfAzurya.Enums;
 //using Microsoft.Xna.Framework.Net;
 //using Microsoft.Xna.Framework.Storage;
-using SkiesOfAzurya.Objects;
 
-namespace SkiesOfAzurya
+namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
 {
     /// <summary>
     /// This is the main type for your game
