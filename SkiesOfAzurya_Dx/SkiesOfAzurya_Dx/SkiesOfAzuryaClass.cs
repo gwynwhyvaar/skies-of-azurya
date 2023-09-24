@@ -121,15 +121,27 @@ namespace SkiesOfAzurya
                 Content.RootDirectory = "Content";
                 Window.Title = "Nazvhi - Skies of Azurya XNA Demo";
 
-                // todo: move this to an in-memory db like sqllite or such
-                graphics.PreferMultiSampling = true; // Convert.ToBoolean(ConfigurationManager.AppSettings["AllowMultiSampling"]);
-                graphics.PreferredDepthStencilFormat = DepthFormat.Depth24;
+                graphics.GraphicsProfile = GraphicsProfile.HiDef;
+                graphics.IsFullScreen = false;
+                graphics.PreferredBackBufferWidth = 900;
+                graphics.PreferredBackBufferHeight = 1080;
+                graphics.DeviceCreated += Graphics_DeviceCreated;
             }
             catch (Exception exception)
             {
                 Trace.TraceInformation($"The following exception occured. {exception.ToString()}");
             }
         }
+
+        private void Graphics_DeviceCreated(object sender, EventArgs e)
+        {
+            // TODO: move this to an in-memory db like sqllite or such
+            graphics.PreferMultiSampling = true; // Convert.ToBoolean(ConfigurationManager.AppSettings["AllowMultiSampling"]);
+            graphics.PreferredBackBufferFormat = SurfaceFormat.Color;
+            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24;
+            graphics.GraphicsDevice.PresentationParameters.MultiSampleCount = 8;
+        }
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
