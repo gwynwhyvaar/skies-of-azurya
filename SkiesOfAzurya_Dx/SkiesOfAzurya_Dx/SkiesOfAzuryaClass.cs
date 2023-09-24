@@ -236,7 +236,7 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
             //load the Assets for the title screen here..
             titleScreen.BackgroundTitleTexture = Content.Load<Texture2D>("Images\\Ro_Labanaktia_Azurya_03");
             Kootenay = Content.Load<SpriteFont>("Fonts/Kootenay");
-            titleScreen.TitleModels.Add("Background", Content.Load<Model>("Models\\nazvhi-flight"));
+            titleScreen.TitleModels.Add("Background", Content.Load<Model>("Models\\yuri"));
         }
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -937,7 +937,7 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
                 #endregion
 
                 //load the font
-                Kootenay = Content.Load<SpriteFont>("Fonts//Kootenay");
+                Kootenay = Content.Load<SpriteFont>("Fonts/Kootenay");
                 //
                 //LoadBackground(GraphicsDevice, Background);
             }

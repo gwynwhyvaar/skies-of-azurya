@@ -97,6 +97,7 @@
     <None Include="app.config" />
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <Content Include="Content\Fonts\Kootenay.spritefont" />
+    <None Include="Content\Models\arch_mage.fbx" />
     <None Include="Content\Models\forceball-mage.fbx" />
     <None Include="Content\Models\forceball-nazvhy.fbx" />
     <None Include="Content\Models\forest.fbx" />
@@ -104,6 +105,10 @@
     <Content Include="Content\Models\nazvhi-title-background.fbx" />
     <None Include="Content\Models\rock.fbx" />
     <None Include="Content\Models\scythe.fbx" />
+    <None Include="Content\Models\scythe2.fbx" />
+    <None Include="Content\Models\wyvern.fbx" />
+    <None Include="Content\Models\yuri.fbx" />
+    <None Include="Content\Models\yuri2.fbx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
