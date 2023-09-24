@@ -63,7 +63,7 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
         public Model hillModel;
         public Model forceBallModel;
         public Model scytheModel;
-        public Model backgroundModel;
+        // public Model backgroundModel;
 
         Matrix[] ForceBallTransforms;
         Matrix[] HillModelTransforms;
@@ -120,7 +120,7 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
             {
                 graphics = new GraphicsDeviceManager(this);
                 Content.RootDirectory = "Content";
-                Window.Title = "Nazvhi - Skies of Azurya XNA Demo";
+                Window.Title = "Nazvhi | Skies of Azurya | MonoGame Demo";
 
                 graphics.GraphicsProfile = GraphicsProfile.HiDef;
                 graphics.IsFullScreen = false;
@@ -506,7 +506,7 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
                     //spriteBatch.End();
 
                     //we try to draw a simple world here..
-                    DrawWorld(backgroundModel);
+                    // DrawWorld(backgroundModel);
 
                     Matrix scytheMatrix = Matrix.CreateTranslation(avatarEx.Position);
                     DrawScytheEx(scytheModel, scytheMatrix, ScytheTransforms);
@@ -628,25 +628,45 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
         }
         public void DrawTitle(Texture2D texture)
         {
+            float aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
+            // float modelRotation = 5.5f;
+
+            Matrix[] parentTransforms = new Matrix[titleScreen.TitleModels["Background"].Bones.Count];
+
+            titleScreen.TitleModels["Background"].CopyAbsoluteBoneTransformsTo(parentTransforms);
+
+            Vector3 modelPostion = Vector3.Zero;
+            Vector3 cameraPostion = new Vector3(100, 0, 600);
             //we draw the world...
             foreach (ModelMesh mesh in titleScreen.TitleModels["Background"].Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.EnableDefaultLighting();
-
                     //effect.FogEnabled = true;
                     //effect.FogStart = 30.0f;//gameConstants.CameraHeight - 2000.0f;
                     //effect.FogEnd = 200.0f;//gameConstants.CameraHeight + 1000.0f;
-                    effect.PreferPerPixelLighting = true;
                     //effect.FogColor = Color.Gray.ToVector3();
+
+                    /*
+                    effect.PreferPerPixelLighting = true;
                     effect.World = Matrix.Identity;
                     effect.View = titleViewMatrix;
                     effect.LightingEnabled = true;
                     effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, GraphicsDevice.Viewport.AspectRatio, 1.1f, 900f);
+                    */
+                    effect.World = Matrix.CreateTranslation(new Vector3(0, 0, 0)); // parentTransforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(modelRotation) * Matrix.CreateTranslation(modelPostion);
+                    effect.View = Matrix.CreateLookAt(cameraPostion, Vector3.Zero, Vector3.Up);
+                    effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), aspectRatio, 1.0f, 1000.0f);
+                    effect.AmbientLightColor = Vector3.One; /*Color.LightSkyBlue.ToVector3();*/
+                    effect.SpecularColor = Vector3.Zero;
+                    effect.EmissiveColor = Vector3.Zero;
+                    // this part allows drawing of the meshes in solid
+                    effect.DirectionalLight0.Enabled = false;
+                    effect.DirectionalLight1.Enabled = false;
+                    effect.DirectionalLight2.Enabled = false;
                 }
                 var depthStencilState = new DepthStencilState();
-
                 depthStencilState.DepthBufferEnable = true;
                 depthStencilState.DepthBufferWriteEnable = true;
 
@@ -911,10 +931,10 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
                 forceBallModel = Content.Load<Model>("Models//forceball-nazvhy");
 
                 //load the scythe
-                scytheModel = Content.Load<Model>("Models//scythe");
+                scytheModel = Content.Load<Model>("Models//scythe2");
 
                 //load the world
-                backgroundModel = Content.Load<Model>("Models//waterfall");
+                // backgroundModel = Content.Load<Model>("Models//waterfall");
 
                 HillModelTransforms = SetupEffectDefaults(hillModel);
                 avatarEx.Transforms = SetupEffectDefaults(avatarEx.AvatarModel);
