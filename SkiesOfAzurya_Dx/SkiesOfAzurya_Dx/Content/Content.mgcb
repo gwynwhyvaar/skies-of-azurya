@@ -231,5 +231,9 @@
 /build:Models/nazvhi-title-background.fbx
 
 #begin Fonts/Kootenay.spritefont
-/copy:Fonts/Kootenay.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Kootenay.spritefont
 

@@ -95,12 +95,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <MonoGameContentReference Include="Content\Content.mgcb" />
-    <None Include="Content\Fonts\Kootenay.spritefont" />
+    <Content Include="Content\Fonts\Kootenay.spritefont" />
     <None Include="Content\Models\forceball-mage.fbx" />
     <None Include="Content\Models\forceball-nazvhy.fbx" />
     <None Include="Content\Models\forest.fbx" />
     <None Include="Content\Models\nazvhi-flight.fbx" />
-    <None Include="Content\Models\nazvhi-title-background.fbx" />
+    <Content Include="Content\Models\nazvhi-title-background.fbx" />
     <None Include="Content\Models\rock.fbx" />
     <None Include="Content\Models\scythe.fbx" />
     <None Include="packages.config" />

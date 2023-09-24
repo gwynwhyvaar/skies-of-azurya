@@ -235,8 +235,8 @@ namespace SkiesOfAzurya
 
             //load the Assets for the title screen here..
             titleScreen.BackgroundTitleTexture = Content.Load<Texture2D>("Images\\Ro_Labanaktia_Azurya_03");
-            Kootenay = Content.Load<SpriteFont>("Fonts//Kootenay");
-            titleScreen.TitleModels.Add("Background", Content.Load<Model>("Models\\nazvhi-title-background"));
+            Kootenay = Content.Load<SpriteFont>("Fonts/Kootenay");
+            titleScreen.TitleModels.Add("Background", Content.Load<Model>("Models\\nazvhi-flight"));
         }
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
