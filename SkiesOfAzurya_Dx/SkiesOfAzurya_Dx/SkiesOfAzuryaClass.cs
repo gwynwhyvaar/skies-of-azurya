@@ -1,6 +1,5 @@
 using System;
 using System.Configuration;
-using System.Diagnostics;
 
 using Gwynwhyvaar.SkiesOfAzurya.WinDx.Enums;
 using Gwynwhyvaar.SkiesOfAzurya.WinDx.Objects;
@@ -20,6 +19,8 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
     /// </summary>
     public class SkiesOfAzuryaGame : Microsoft.Xna.Framework.Game
     {
+        private readonly NLog.ILogger _logger = NLog.LogManager.GetCurrentClassLogger();
+
         private TitleScreen titleScreen = new TitleScreen();
 
         private GameStateEnum GameStateEnum = GameStateEnum.TitleScreen;
@@ -129,7 +130,8 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
             }
             catch (Exception exception)
             {
-                Trace.TraceInformation($"The following exception occured. {exception.ToString()}");
+                _logger.Fatal("The following exception occured. {exception}", exception.ToString());
+                throw exception;
             }
         }
 
@@ -203,7 +205,7 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                _logger.Fatal("The following exception occured. {exception}", exception.ToString());
                 //File.AppendAllText("c:\\ro.azurya.log", DateTime.Now.ToString() + "\n\r#Error :" + exxxxx.Message + "\n\r\tStacktrace :" + exxxxx.StackTrace + "\n\r\n\r");
                 // panic
                 throw exception;
@@ -943,7 +945,7 @@ namespace Gwynwhyvaar.SkiesOfAzurya.WinDx
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                _logger.Fatal("The following exception occured. {exception}", exception.ToString());
                 //File.AppendAllText("c:\\ro.azurya.log", DateTime.Now.ToString() + "\n\r#Error :" + exxxxx.Message + "\n\r\tStacktrace :" + exxxxx.StackTrace + "\n\r\n\r");
                 // panic
                 throw exception;
